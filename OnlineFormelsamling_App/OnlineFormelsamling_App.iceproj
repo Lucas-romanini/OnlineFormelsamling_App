@@ -21,10 +21,41 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
   </PropertyGroup>
   <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.defaults">
+      <SubType>Content</SubType>
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </Content>
+    <Content Include="css\MainStyle.css">
+      <SubType>Content</SubType>
+      <DependentUpon>css\MainStyle.less</DependentUpon>
+    </Content>
+    <Content Include="css\MainStyle.less" />
+    <Content Include="css\MainStyle.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\Menu.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\Menu.less" />
+    <Content Include="css\Menu.min.css">
+      <SubType>Content</SubType>
+      <DependentUpon>c:\users\luca0327\documents\visual studio 2015\Projects\OnlineFormelsamling_App\OnlineFormelsamling_App\css\Menu.css</DependentUpon>
+    </Content>
+    <Content Include="img\icon-arrow-down.png" />
+    <Content Include="img\icon-arrow-up.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="img\test.jpg" />
+    <Content Include="js\FormlerOF.js" />
+    <Content Include="js\jquery-3.1.1.min.js" />
+    <Content Include="js\Main.js" />
+    <Content Include="js\menu.js" />
     <None Include=".abignore" />
     <Content Include=".abproject" />
     <Content Include=".debug.abproject" />
     <Content Include=".release.abproject" />
+    <Content Include="Cirkel.html" />
     <Content Include="cordova.android.js" />
     <Content Include="cordova.ios.js" />
     <Content Include="cordova.wp8.js" />
