@@ -8,4 +8,10 @@ function navigate(id, page) {
     Window.location.assign(page + ".html");
 }
 
+$("document").ready(function () {
+    var angle = 0;
+    $(".headerBox").click(function () {
+        $(this).next(".hidebox").slideToggle("slow");
 
+    });
+});

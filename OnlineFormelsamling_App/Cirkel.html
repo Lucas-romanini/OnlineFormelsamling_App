@@ -28,128 +28,135 @@
     <script src="js/menu.js"></script>
     <link href="css/MainStyle.min.css" rel="stylesheet" />
     <script src="js/Main.js"></script>
+    <script src="js/FormlerOF.js"></script>
     <script>
 
 
 
         function Udregn() {
-            var id = 0;
-            var radius1 = $("#radius1")
 
-            var newUdregn = new Udregn(id, radius1);
+            var radius1 = $("#radius1").val();
 
-            $.ajax({
-                type: 'post',
-                url: URL + 'api/OF/Cirkel',
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                data: JSON.stringify(newUdregn),
-                success: function () {
-                    $("#msg").html("")
-                },
-                error: function (){
-                    $("#msg").html("Der opstod en fejl!!!")
-                }
-            });
+            var areal = Math.PI + Math.pow(radius1, 2);
+
+            $("#resultat").html(areal);
+
+            return false;
         }
+        $(function () {
+            var $textBox = $("#textBox")
+            var $parameter1  =$("#Parameter1")
+               $.ajax({
+                   method: 'GET',
+                   url: URL + 'api/OF/Cirkel/3',
+                   success: function (FormlerOF) {
+                       $textBox.append("<p>" + FormlerOF.Beskrivelse + "</p>");
+                       //$parameter1.attr("placeholder", FormlerOF.Parameter1);
+                       $('#Parameter1').attr("placeholder", "placeholder text");
+                   },
+                   error: function (jqXhr, exeption) {
+                       $("#textBox").html("Der opstod en fejl")
+                   }
+
+               });
+               
+           });
 
 
     </script>
 </head>
 <body>
-    <nav class="nav_container">
-        <div id="sidebar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="Cirkel.html">testing</a></li>
-                <li>
-                    <a href="#" class="headerBox">
-                        Geometri
-
-                        <img src="img/icon-arrow-down.png" class="menu-IMG"/>
-                    </a>
-                    <ul class="hidebox">
-                        <li>
-                            <a href="#" class="headerBox">
-                                Trekanter
-
-                                <img src="img/icon-arrow-down.png" class="menu-IMG" />
-
-                            </a>
-                            <ul class="hidebox">
-                                <li><a href="#">Linjer ved trekanten</a></li>
-                                <li><a href="#">Areal af en trekant</a></li>
-                                <li><a href="#">Ensvinklede trekanter</a></li>
-                                <li><a href="#">Ligebenet trekant</a></li>
-                                <li><a href="#">Ligesidet trekant</a></li>
-                                <li><a href="#">Retvinklet trekant</a></li>
-                                <li><a href="#">Trigonometri</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="headerBox">
-                                Firkanter
-                                <img src="img/icon-arrow-down.png" class="menu-IMG"/>
-                            </a>
-                            <ul class="hidebox">
-                                <li><a href="#">Rektangler</a></li>
-                                <li><a href="#">Parallelogram</a></li>
-                                <li><a href="#">Trapez</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Cirkler</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="headerBox">
-                        Rumfang og overflade
-                        <img src="img/icon-arrow-down.png" class="menu-IMG"/>
-                    </a>
-                    <ul class="hidebox">
-                        <li><a href="#">Kasse</a></li>
-                        <li><a href="#">Prisme</a></li>
-                        <li><a href="#">Cylinder</a></li>
-                        <li><a href="#">Kegle</a></li>
-                        <li><a href="#">Pyramide</a></li>
-                        <li><a href="#">Kugle</a></li>
-                    </ul>
-
-                </li>
-            </ul>
-        </div>
-        <div class="main-menu-content">
-            <div class="swipe-area">
-                <a data-toggle=".nav_container" id="sidebar-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </a>
-            </div>
-        </div>
-    </nav>
-    <h1>OnlineFormelsamling.dk</h1>
-
     <div class="Main-content">
-        <img src="https://www.stokke.com/on/demandware.static/-/Library-Sites-Shared/default/dw0854c51b/stokke_stories/stokke_stories_stories/moms_from_around_the_world/EZP_placeholder_470x300.jpg" />
+        <nav class="nav_container">
+            <div id="sidebar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Cirkel.html">testing</a></li>
+                    <li>
+                        <a href="#" class="headerBox">
+                            Geometri
 
-        <form onsubmit="return Udregn(), false;">
-            <span>r:</span><input type="number" id="radius1" name="radius1" placeholder="Parameter 1" />
-            <br />
-            <input type="submit" value="Udregn" />
-            <div>
-                <p>Resultat = <span class="result" id="result"></span></p>
+                            <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                        </a>
+                        <ul class="hidebox">
+                            <li>
+                                <a href="#" class="headerBox">
+                                    Trekanter
+
+                                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
+
+                                </a>
+                                <ul class="hidebox">
+                                    <li><a href="#">Linjer ved trekanten</a></li>
+                                    <li><a href="#">Areal af en trekant</a></li>
+                                    <li><a href="#">Ensvinklede trekanter</a></li>
+                                    <li><a href="#">Ligebenet trekant</a></li>
+                                    <li><a href="#">Ligesidet trekant</a></li>
+                                    <li><a href="#">Retvinklet trekant</a></li>
+                                    <li><a href="#">Trigonometri</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="headerBox">
+                                    Firkanter
+                                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                                </a>
+                                <ul class="hidebox">
+                                    <li><a href="#">Rektangler</a></li>
+                                    <li><a href="#">Parallelogram</a></li>
+                                    <li><a href="#">Trapez</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Cirkler</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="headerBox">
+                            Rumfang og overflade
+                            <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                        </a>
+                        <ul class="hidebox">
+                            <li><a href="#">Kasse</a></li>
+                            <li><a href="#">Prisme</a></li>
+                            <li><a href="#">Cylinder</a></li>
+                            <li><a href="#">Kegle</a></li>
+                            <li><a href="#">Pyramide</a></li>
+                            <li><a href="#">Kugle</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
             </div>
-        </form>
+            <div class="main-menu-content">
+                <div class="swipe-area">
+                    <a data-toggle=".nav_container" id="sidebar-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <h1>OnlineFormelsamling.dk</h1>
 
-        <div class="text-box">
-            <p>
-                Lorem ipsum dolor sit amet, eget congue ante lacus. Lacus in in non morbi augue, dictum amet lorem, et varius quis leo lacus tellus. Elit non duis sit metus sit, blandit at feugiat et lacinia elementum eros. Maecenas augue eu arcu ridiculus, mauris pede odio mollis pellentesque, leo interdum nunc porta sed curabitur phasellus, at quam
+        <div class="Mat-content">
+            <img src="https://www.stokke.com/on/demandware.static/-/Library-Sites-Shared/default/dw0854c51b/stokke_stories/stokke_stories_stories/moms_from_around_the_world/EZP_placeholder_470x300.jpg" />
 
-            </p>
+            <form onsubmit="event.preventDefault(); Udregn();">
+                <span>r:</span><input type="number" id="radius1"  name="radius1" placeholder="hej" />
+                <br />
+                <input type="submit" value="udregn">
+                
+                    <p>Resultat = <span class="result" id="resultat"></span></p>
+                
+            </form>
+
+            <div class="text-box" id="textBox">
+
+            </div>
+
         </div>
-
     </div>
-
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>

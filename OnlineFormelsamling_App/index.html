@@ -30,113 +30,124 @@
     <script src="js/FormlerOF.js"></script>
     <script src="js/Main.js"></script>
     <script>
-        var $testDiv = $("#testDiv")
+
         $(function () {
+
+            var $mainDiv = $("#mainDiv")
 
             $.ajax({
                 method: 'GET',
-                url: URL + 'api/OF/GetPosts/',
-                success: function (test) {
-                    $("#testDiv").html("Der opstod ikke en fejl")
-                    //$.each(posts, function (i, FormlerOF) {
-                    //    $testDiv.append("<p>" + FormlerOF.Navn + "</p>")
-                    //});
+                url: URL + "api/OF/GetPosts",
+                success: function (FormlerOF) {
+                    $.each(FormlerOF, function (i, Formler) {
+                        $mainDiv.append("<a href='"+ Formler.Navn +".html' class='forsideDiv'><h2>" + Formler.Navn + "</h2> <br/> <img src='img/" + Formler.IMG + "'/></div>");
+                    });
                 },
                 error: function (jqXhr, exeption) {
-                    $("#testDiv").html("Der opstod en fejl")
+                    $("#mainDiv").html("Der opstod en fejl")
                 }
+            });            
+            
 
-            });
+            //$.ajax({
+            //    method: 'GET',
+            //    url: URL + "api/OF/Index/1",
+            //    success: function (FormlerOF) {
+            
+            //        $testDiv.append("<h1>" + Formler.Navn + "</h1>");
+            
+            //    },
+            //    error: function (jqXhr, exeption) {
+            //        $("#testDiv").html("Der opstod en fejl")
+            //    }
 
-            //$("document").ready(function () {
-            //    var angle = 0;
-            //    $(".headerBox").click(function () {
-            //        $(this).next(".hidebox").slideToggle("slow");
-
-            //    });
             //});
-
         });
+
+        
+
+        // });
 
     </script>
 
 </head>
 <body>
-    <nav class="nav_container">
-        <div id="sidebar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="Cirkel.html">testing</a></li>
-                <li>
-                    <a href="#" class="headerBox">
-                        Geometri
+    <div class="Main-content">
+        <nav class="nav_container">
+            <div id="sidebar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Cirkel.html">testing</a></li>
+                    <li>
+                        <a href="#" class="headerBox">
+                            Geometri
 
-                        <img src="img/icon-arrow-down.png" class="menu-IMG" />
-                    </a>
-                    <ul class="hidebox">
-                        <li>
-                            <a href="#" class="headerBox">
-                                Trekanter
+                            <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                        </a>
+                        <ul class="hidebox">
+                            <li>
+                                <a href="#" class="headerBox">
+                                    Trekanter
 
-                                <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
 
-                            </a>
-                            <ul class="hidebox">
-                                <li><a href="#">Linjer ved trekanten</a></li>
-                                <li><a href="#">Areal af en trekant</a></li>
-                                <li><a href="#">Ensvinklede trekanter</a></li>
-                                <li><a href="#">Ligebenet trekant</a></li>
-                                <li><a href="#">Ligesidet trekant</a></li>
-                                <li><a href="#">Retvinklet trekant</a></li>
-                                <li><a href="#">Trigonometri</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="headerBox">
-                                Firkanter
-                                <img src="img/icon-arrow-down.png" class="menu-IMG" />
-                            </a>
-                            <ul class="hidebox">
-                                <li><a href="#">Rektangler</a></li>
-                                <li><a href="#">Parallelogram</a></li>
-                                <li><a href="#">Trapez</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Cirkler</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="headerBox">
-                        Rumfang og overflade
-                        <img src="img/icon-arrow-down.png" class="menu-IMG" />
-                    </a>
-                    <ul class="hidebox">
-                        <li><a href="#">Kasse</a></li>
-                        <li><a href="#">Prisme</a></li>
-                        <li><a href="#">Cylinder</a></li>
-                        <li><a href="#">Kegle</a></li>
-                        <li><a href="#">Pyramide</a></li>
-                        <li><a href="#">Kugle</a></li>
-                    </ul>
+                                </a>
+                                <ul class="hidebox">
+                                    <li><a href="#">Linjer ved trekanten</a></li>
+                                    <li><a href="#">Areal af en trekant</a></li>
+                                    <li><a href="#">Ensvinklede trekanter</a></li>
+                                    <li><a href="#">Ligebenet trekant</a></li>
+                                    <li><a href="#">Ligesidet trekant</a></li>
+                                    <li><a href="#">Retvinklet trekant</a></li>
+                                    <li><a href="#">Trigonometri</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="headerBox">
+                                    Firkanter
+                                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                                </a>
+                                <ul class="hidebox">
+                                    <li><a href="#">Rektangler</a></li>
+                                    <li><a href="#">Parallelogram</a></li>
+                                    <li><a href="#">Trapez</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Cirkler</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="headerBox">
+                            Rumfang og overflade
+                            <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                        </a>
+                        <ul class="hidebox">
+                            <li><a href="#">Kasse</a></li>
+                            <li><a href="#">Prisme</a></li>
+                            <li><a href="#">Cylinder</a></li>
+                            <li><a href="#">Kegle</a></li>
+                            <li><a href="#">Pyramide</a></li>
+                            <li><a href="#">Kugle</a></li>
+                        </ul>
 
-                </li>
-            </ul>
-        </div>
-        <div class="main-menu-content">
-            <div class="swipe-area">
-                <a data-toggle=".nav_container" id="sidebar-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </a>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </nav>
-    <h1>OnlineFormelsamling.dk</h1>
+            <div class="main-menu-content">
+                <div class="swipe-area">
+                    <a data-toggle=".nav_container" id="sidebar-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <h1>OnlineFormelsamling.dk</h1>
 
-    <div id="testDiv"></div>
+        <div id="mainDiv"></div>
 
-
+    </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">

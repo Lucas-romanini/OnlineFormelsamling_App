@@ -26,6 +26,7 @@
       <SubType>Content</SubType>
       <DependentUpon>compilerconfig.json</DependentUpon>
     </Content>
+    <Content Include="img\cirkel.PNG" />
     <Content Include="css\MainStyle.css">
       <SubType>Content</SubType>
       <DependentUpon>css\MainStyle.less</DependentUpon>
@@ -42,11 +43,11 @@
       <SubType>Content</SubType>
       <DependentUpon>c:\users\luca0327\documents\visual studio 2015\Projects\OnlineFormelsamling_App\OnlineFormelsamling_App\css\Menu.css</DependentUpon>
     </Content>
+    <Content Include="img\test.jpg" />
     <Content Include="img\icon-arrow-down.png" />
     <Content Include="img\icon-arrow-up.png">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="img\test.jpg" />
     <Content Include="js\FormlerOF.js" />
     <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="js\Main.js" />

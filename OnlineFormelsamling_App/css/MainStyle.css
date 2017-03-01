@@ -2,44 +2,59 @@
   font-family: Verdana, Tahoma, sans-serif;
 }
 h1 {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: right;
   vertical-align: middle;
   margin-top: 0;
 }
+.forsideDiv {
+  margin-top: 5%;
+  width: 50%;
+  float: left;
+}
+.forsideDiv img {
+  max-width: 90%;
+}
+.forsideDiv h2 {
+  margin: 0;
+}
 .Main-content {
+  overflow-x: hidden;
+  min-height: 400px;
+}
+.Mat-content {
   width: 100%;
 }
-.Main-content img {
+.Mat-content img {
   width: 100%;
 }
-.Main-content form {
+.Mat-content form {
   float: left;
   width: 50%;
 }
-.Main-content form p {
+.Mat-content form p {
   font-size: 0.8em;
 }
-.Main-content form span {
+.Mat-content form span {
   width: 20px;
   display: inline-block;
 }
-.Main-content form input[type=number] {
+.Mat-content form input[type=number] {
   width: 70%;
 }
-.Main-content form input[type=submit] {
+.Mat-content form input[type=submit] {
   margin-top: 10px;
 }
-.Main-content form .result {
+.Mat-content form .result {
   min-width: 37.3px;
   text-decoration: underline;
   border-bottom: 1px solid #000;
 }
-.Main-content .text-box {
+.Mat-content .text-box {
   float: right;
   width: 50%;
   font-size: 0.7em;
 }
-.Main-content .text-box p {
+.Mat-content .text-box p {
   margin: 0;
 }
