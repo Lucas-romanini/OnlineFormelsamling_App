@@ -1,22 +1,5 @@
 ﻿<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -28,50 +11,60 @@
     <link href="css/Menu.css" rel="stylesheet" />
     <script src="js/menu.js"></script>
     <link href="css/MainStyle.min.css" rel="stylesheet" />
-    <script src="js/FormlerOF.js"></script>
     <script src="js/Main.js"></script>
+    <script src="js/FormlerOF.js"></script>
     <script>
 
+        function UdregnRumfang() {
+            
+            var radius1 = $("#radius1").val();
+            var hoejde1 = $("#hoejde1").val();
+
+            var rumfang = Math.PI * Math.pow(radius1, 2) * hoejde1;
+
+            rumfang = rumfang.toFixed(3);
+
+            $("#resultat1").html(rumfang).round;
+
+            return false;
+        }
+
+
+        function UdregnOverflade() {
+
+            var radius2 = $("#radius2").val();
+            var hoejde2 = $("#hoejde2").val();
+
+            var overflade = 2 * Math.PI * radius2 * hoejde2;
+
+            overflade = overflade.toFixed(3);
+
+            $("#resultat2").html(overflade).round;
+        }
+
+
+
+
         $(function () {
-
-            var $mainDiv = $("#mainDiv")
-
+            var $textBox = $("#textBox");
+            var $MatIMG = $("#matIMG");
             $.ajax({
                 method: 'GET',
-                url: URL + "api/OF/GetPosts",
+                url: URL + 'api/OF/Udregninger/5',
                 success: function (FormlerOF) {
-                    $.each(FormlerOF, function (i, Formler) {
-                        $mainDiv.append("<a href='"+ Formler.Navn +".html' class='forsideDiv'><h2>" + Formler.Navn + "</h2> <br/> <img src='img/" + Formler.IMG + "'/></div>");
-                    });
+                    $textBox.append("<p>" + FormlerOF.Beskrivelse + "</p>");
+                    $MatIMG.attr("src", "img/" + FormlerOF.IMG);
                 },
                 error: function (jqXhr, exeption) {
-                    $("#mainDiv").html("Der opstod en fejl")
+                    $("#textBox").html("Der opstod en fejl")
                 }
-            });            
-            
 
-            //$.ajax({
-            //    method: 'GET',
-            //    url: URL + "api/OF/Index/1",
-            //    success: function (FormlerOF) {
-            
-            //        $testDiv.append("<h1>" + Formler.Navn + "</h1>");
-            
-            //    },
-            //    error: function (jqXhr, exeption) {
-            //        $("#testDiv").html("Der opstod en fejl")
-            //    }
+            });
 
-            //});
         });
-
-        
-
-        // });
-
     </script>
-
 </head>
+
 <body>
     <div class="Main-content">
         <nav class="nav_container">
@@ -123,9 +116,9 @@
                             <img src="img/icon-arrow-down.png" class="menu-IMG" />
                         </a>
                         <ul class="hidebox">
-                            <li><a href="Cylinder.html">Cylinder</a></li>
-                            <li><a href="Kasse.html">Kasse</a></li>
-                            <li><a href="Kegle.html">Kegle</a></li>
+                            <li><a href="#">Cylinder</a></li>
+                            <li><a href="#">Kasse</a></li>
+                            <li><a href="#">Kegle</a></li>
                             <li><a href="#">Kugle</a></li>
                             <li><a href="#">Prisme</a></li>
                             <li><a href="#">Pyramide</a></li>
@@ -146,9 +139,40 @@
         </nav>
         <h1>OnlineFormelsamling.dk</h1>
 
-        <div id="mainDiv"></div>
+        <div class="Mat-content">
+            <img src="" id="matIMG" />
+            <div class="forms">
+                <form onsubmit="event.preventDefault(); UdregnRumfang();">
+                    <p>En Cylinders Rumfang</p>
+                    <span>r:</span><input type="number" id="radius1" placeholder="Radius" />
+                    <br />
+                    <span>h:</span><input type="number" id="hoejde1" placeholder="H�jde" />
+                    <br />
+                    <input type="submit" value="udregn">
 
+                    <p>Resultat = <span class="result" id="resultat1"></span></p>
+                    <hr />
+                </form>
+                <form onsubmit="event.preventDefault(); UdregnOverflade();">
+                    <p>En Cylinders Krumme Overflade</p>
+                    <span>r:</span><input type="number" id="radius2" placeholder="Radius" />
+                    <br />
+                    <span>h:</span><input type="number" id="hoejde2" placeholder="H�jde" />
+                    <br />
+                    <input type="submit" value="udregn">
+
+                    <p>Resultat = <span class="result" id="resultat2"></span></p>
+                    <hr />
+                </form>
+
+            </div>
+            <div class="text-box" id="textBox">
+
+            </div>
+
+        </div>
     </div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">

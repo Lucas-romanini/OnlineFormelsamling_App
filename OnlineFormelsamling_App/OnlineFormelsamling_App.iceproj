@@ -21,11 +21,14 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Kasse.html" />
+    <Content Include="Kegle.html" />
     <None Include="compilerconfig.json" />
     <Content Include="compilerconfig.json.defaults">
       <SubType>Content</SubType>
       <DependentUpon>compilerconfig.json</DependentUpon>
     </Content>
+    <Content Include="Cylinder.html" />
     <Content Include="img\cirkel.PNG" />
     <Content Include="css\MainStyle.css">
       <SubType>Content</SubType>
@@ -43,11 +46,22 @@
       <SubType>Content</SubType>
       <DependentUpon>c:\users\luca0327\documents\visual studio 2015\Projects\OnlineFormelsamling_App\OnlineFormelsamling_App\css\Menu.css</DependentUpon>
     </Content>
+    <Content Include="img\cylinder.PNG" />
+    <Content Include="img\Kasse.PNG" />
+    <Content Include="img\Kegle.PNG" />
+    <Content Include="img\kugle.PNG" />
+    <Content Include="img\Parallelogram.PNG" />
+    <Content Include="img\prisme.PNG" />
+    <Content Include="img\Pyramide.PNG" />
+    <Content Include="img\Rektangel.PNG" />
     <Content Include="img\test.jpg" />
     <Content Include="img\icon-arrow-down.png" />
     <Content Include="img\icon-arrow-up.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="img\trapez.PNG" />
+    <Content Include="img\trekant.PNG" />
+    <Content Include="img\trekant2.PNG" />
     <Content Include="js\FormlerOF.js" />
     <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="js\Main.js" />

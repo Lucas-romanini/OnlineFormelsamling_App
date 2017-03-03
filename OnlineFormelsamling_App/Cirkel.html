@@ -20,6 +20,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <title>Hello World!</title>
@@ -33,26 +34,62 @@
 
 
 
-        function Udregn() {
+        function UdregnAreal() {
 
             var radius1 = $("#radius1").val();
 
             var areal = Math.PI + Math.pow(radius1, 2);
 
-            $("#resultat").html(areal);
+            areal = areal.toFixed(3)
+
+            alert($("#radius1").val());
+
+
+            $("#resultat1").html(areal).round;
+
+            return false;
+        }
+
+        function UdregnOmkreds1() {
+
+            var radius2 = $("#radius2").val();
+
+            var omkredsrad = 2 * Math.PI * radius2;
+
+            omkredsrad = omkredsrad.toFixed(3)
+
+            $("#resultat2").html(omkredsrad).round;
+
+            return false;
+        }
+
+        function UdregnOmkreds2() {
+
+            var diameter = $("#diameter").val();
+
+            var omkredsdia = Math.PI * diameter;
+
+            omkredsdia = omkredsdia.toFixed(3)
+
+            $("#resultat3").html(omkredsdia).round;
 
             return false;
         }
         $(function () {
-            var $textBox = $("#textBox")
-            var $parameter1  =$("#Parameter1")
+            var $textBox = $("#textBox");
+            var $parameter1 = $("#Parameter1");
+            var $parameter2 = $("#Parameter2");
+            var $parameter3 = $("#Parameter2");
+            var $MatIMG = $("#matIMG");
                $.ajax({
                    method: 'GET',
-                   url: URL + 'api/OF/Cirkel/3',
+                   url: URL + 'api/OF/Udregninger/3',
                    success: function (FormlerOF) {
                        $textBox.append("<p>" + FormlerOF.Beskrivelse + "</p>");
-                       //$parameter1.attr("placeholder", FormlerOF.Parameter1);
-                       $('#Parameter1').attr("placeholder", "placeholder text");
+                       $MatIMG.attr("src", "img/" + FormlerOF.IMG);
+                       $parameter1.attr("placeholder", "" + FormlerOF.Parameter1);
+                       $parameter2.attr("placeholder", "" + FormlerOF.Parameter1);
+                       $parameter3.attr("placeholder", "" + FormlerOF.Parameter2);
                    },
                    error: function (jqXhr, exeption) {
                        $("#textBox").html("Der opstod en fejl")
@@ -61,8 +98,6 @@
                });
                
            });
-
-
     </script>
 </head>
 <body>
@@ -107,7 +142,7 @@
                                     <li><a href="#">Trapez</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Cirkler</a></li>
+                            <li><a href="Cirkel.html">Cirkler</a></li>
                         </ul>
                     </li>
                     <li>
@@ -116,12 +151,12 @@
                             <img src="img/icon-arrow-down.png" class="menu-IMG" />
                         </a>
                         <ul class="hidebox">
-                            <li><a href="#">Kasse</a></li>
-                            <li><a href="#">Prisme</a></li>
-                            <li><a href="#">Cylinder</a></li>
+                            <li><a href="Cylinder.html">Cylinder</a></li>
+                            <li><a href="Kasse.html">Kasse</a></li>
                             <li><a href="#">Kegle</a></li>
-                            <li><a href="#">Pyramide</a></li>
                             <li><a href="#">Kugle</a></li>
+                            <li><a href="#">Prisme</a></li>
+                            <li><a href="#">Pyramide</a></li>
                         </ul>
 
                     </li>
@@ -140,19 +175,40 @@
         <h1>OnlineFormelsamling.dk</h1>
 
         <div class="Mat-content">
-            <img src="https://www.stokke.com/on/demandware.static/-/Library-Sites-Shared/default/dw0854c51b/stokke_stories/stokke_stories_stories/moms_from_around_the_world/EZP_placeholder_470x300.jpg" />
+            <img src="" id="matIMG"/>
+            <div class="forms">
+                <form onsubmit="event.preventDefault(); UdregnAreal();">
+                    <p>En Cirkels Areal</p>
+                    <span>r:</span><input type="number" id="radius1" placeholder="Radius" />
+                    <br />
+                    <input type="submit" value="udregn">
 
-            <form onsubmit="event.preventDefault(); Udregn();">
-                <span>r:</span><input type="number" id="radius1"  name="radius1" placeholder="hej" />
-                <br />
-                <input type="submit" value="udregn">
-                
-                    <p>Resultat = <span class="result" id="resultat"></span></p>
-                
-            </form>
+                    <p>Resultat = <span class="result" id="resultat1"></span></p>
+                    <hr />
+                </form>
+                <form onsubmit="event.preventDefault(); UdregnOmkreds1();">
+                    <p>En Cirkels Omkreds</p>
 
+                    <span>r:</span><input type="number" id="radius2 Parameter2" placeholder="Radius" />
+                    <br />
+                    <input type="submit" value="udregn">
+
+                    <p>Resultat = <span class="result" id="resultat2"></span></p>
+                    <hr />
+                </form>
+                <form onsubmit="event.preventDefault(); UdregnOmkreds2();">
+                    <p>En Cirkels Omkreds</p>
+
+                    <span>r:</span><input type="number" id="diameter Parameter3" placeholder="Diameter" />
+                    <br />
+                    <input type="submit" value="udregn">
+
+                    <p>Resultat = <span class="result" id="resultat3"></span></p>
+                    <hr />
+                </form>
+            </div>
             <div class="text-box" id="textBox">
-
+                
             </div>
 
         </div>

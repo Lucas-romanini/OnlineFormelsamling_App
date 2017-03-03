@@ -19,36 +19,35 @@ h1 {
   margin: 0;
 }
 .Main-content {
-  overflow-x: hidden;
-  min-height: 400px;
+  /*overflow-x:hidden;*/
 }
 .Mat-content {
   width: 100%;
 }
 .Mat-content img {
-  width: 100%;
+  max-height: 285px;
 }
-.Mat-content form {
+.Mat-content .forms {
   float: left;
   width: 50%;
 }
-.Mat-content form p {
+.Mat-content .forms form p {
   font-size: 0.8em;
+  margin: 5px 0;
 }
-.Mat-content form span {
+.Mat-content .forms form span {
   width: 20px;
   display: inline-block;
 }
-.Mat-content form input[type=number] {
+.Mat-content .forms form input[type=number] {
   width: 70%;
 }
-.Mat-content form input[type=submit] {
+.Mat-content .forms form input[type=submit] {
   margin-top: 10px;
 }
-.Mat-content form .result {
+.Mat-content .forms form .result {
   min-width: 37.3px;
   text-decoration: underline;
-  border-bottom: 1px solid #000;
 }
 .Mat-content .text-box {
   float: right;
