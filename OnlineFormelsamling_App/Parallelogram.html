@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Hello World!</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <link href="css/Menu.css" rel="stylesheet" />
+    <script src="js/menu.js"></script>
+    <link href="css/MainStyle.min.css" rel="stylesheet" />
+    <script src="js/Main.js"></script>
+    <script src="js/FormlerOF.js"></script>
+    <script>
+
+        function UdregnAreal() {
+
+            var hoejde = $("#hoejde").val();
+            var grundlinje = $("#grundlinje").val();
+
+            var areal = hoejde*grundlinje;
+
+            areal = areal.toFixed(3);
+
+            $("#resultat").html(areal).round;
+
+            return false;
+        }
+
+        $(function () {
+            var $textBox = $("#textBox");
+            var $MatIMG = $("#matIMG");
+            $.ajax({
+                method: 'GET',
+                url: URL + 'api/OF/Udregninger/9',
+                success: function (FormlerOF) {
+                    $textBox.append("<p>" + FormlerOF.Beskrivelse + "</p>");
+                    $MatIMG.attr("src", "img/" + FormlerOF.IMG);
+                },
+                error: function (jqXhr, exeption) {
+                    $("#textBox").html("Der opstod en fejl")
+                }
+
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="Main-content">
+        <nav class="nav_container">
+            <div id="sidebar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Cirkel.html">testing</a></li>
+                    <li>
+                        <a href="#" class="headerBox">
+                            Geometri
+
+                            <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                        </a>
+                        <ul class="hidebox">
+                            <li>
+                                <a href="#" class="headerBox">
+                                    Trekanter
+
+                                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
+
+                                </a>
+                                <ul class="hidebox">
+                                    <li><a href="#">Linjer ved trekanten</a></li>
+                                    <li><a href="#">Areal af en trekant</a></li>
+                                    <li><a href="#">Ensvinklede trekanter</a></li>
+                                    <li><a href="#">Ligebenet trekant</a></li>
+                                    <li><a href="#">Ligesidet trekant</a></li>
+                                    <li><a href="#">Retvinklet trekant</a></li>
+                                    <li><a href="#">Trigonometri</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="headerBox">
+                                    Firkanter
+                                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                                </a>
+                                <ul class="hidebox">
+                                    <li><a href="#">Rektangler</a></li>
+                                    <li><a href="#">Parallelogram</a></li>
+                                    <li><a href="#">Trapez</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="Cirkel.html">Cirkler</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="headerBox">
+                            Rumfang og overflade
+                            <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                        </a>
+                        <ul class="hidebox">
+                            <li><a href="Cylinder.html">Cylinder</a></li>
+                            <li><a href="Kasse.html">Kasse</a></li>
+                            <li><a href="#">Kegle</a></li>
+                            <li><a href="#">Kugle</a></li>
+                            <li><a href="#">Prisme</a></li>
+                            <li><a href="#">Pyramide</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="main-menu-content">
+                <div class="swipe-area">
+                    <a data-toggle=".nav_container" id="sidebar-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <h1>OnlineFormelsamling.dk</h1>
+
+        <div class="Mat-content">
+            <img src="" id="matIMG" />
+            <div class="forms">
+                <form onsubmit="event.preventDefault(); UdregnAreal();">
+                    <p>Et Parallelograms Areal</p>
+                    <span>h:</span><input type="number" id="hoejde" placeholder="Højde" />
+                    <br />
+
+                    <span>g:</span><input type="number" id="grundlinje" placeholder="Grundlinje" />
+                    <br />
+
+                    <input type="submit" value="udregn">
+
+                    <p>Resultat = <span class="result" id="resultat"></span></p>
+                    <hr />
+                </form>
+
+            </div>
+            <div class="text-box" id="textBox">
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+app.initialize();
+    </script>
+</body>
+</html>
