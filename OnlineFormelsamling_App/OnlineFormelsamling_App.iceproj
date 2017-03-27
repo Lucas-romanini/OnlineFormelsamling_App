@@ -23,6 +23,21 @@
   <ItemGroup>
     <Content Include="Kasse.html" />
     <Content Include="Kegle.html" />
+    <Content Include="Kugle.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Parallelogram.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Prisme.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pyramide.html" />
+    <Content Include="Rektangel.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Trapez.html" />
+    <Content Include="Trekant.html" />
     <None Include="compilerconfig.json" />
     <Content Include="compilerconfig.json.defaults">
       <SubType>Content</SubType>

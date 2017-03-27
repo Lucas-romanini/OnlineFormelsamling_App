@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 
 <html>
 <head>
@@ -13,7 +13,7 @@
     <script src="js/Main.js"></script>
     <script src="js/FormlerOF.js"></script>
     <script>
-
+        
         function UdregnAreal() {
 
             var laengde1 = $("#laengde1").val();
@@ -21,7 +21,7 @@
 
             var areal = laengde1 * bredde1
 
-            areal = areal.toFixed(3);
+            areal = areal.toFixed(3);k
 
             $("#resultat1").html(areal).round;
 
@@ -63,86 +63,86 @@
 </head>
 
 <body>
-    <div class="Main-content">
-        <nav class="nav_container">
-            <div id="sidebar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Cirkel.html">testing</a></li>
+    <div class="Main-content"><nav class="nav_container">
+    <div id="sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>
+                <a href="#" class="headerBox">
+                    Geometri
+
+                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                </a>
+                <ul class="hidebox">
                     <li>
                         <a href="#" class="headerBox">
-                            Geometri
+                            Trekanter
 
                             <img src="img/icon-arrow-down.png" class="menu-IMG" />
+
                         </a>
                         <ul class="hidebox">
-                            <li>
-                                <a href="#" class="headerBox">
-                                    Trekanter
-
-                                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
-
-                                </a>
-                                <ul class="hidebox">
-                                    <li><a href="#">Linjer ved trekanten</a></li>
-                                    <li><a href="#">Areal af en trekant</a></li>
-                                    <li><a href="#">Ensvinklede trekanter</a></li>
-                                    <li><a href="#">Ligebenet trekant</a></li>
-                                    <li><a href="#">Ligesidet trekant</a></li>
-                                    <li><a href="#">Retvinklet trekant</a></li>
-                                    <li><a href="#">Trigonometri</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="headerBox">
-                                    Firkanter
-                                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
-                                </a>
-                                <ul class="hidebox">
-                                    <li><a href="#">Rektangler</a></li>
-                                    <li><a href="#">Parallelogram</a></li>
-                                    <li><a href="#">Trapez</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="Cirkel.html">Cirkler</a></li>
+                            <li><a href="#">Linjer ved trekanten</a></li>
+                            <li><a href="#">Areal af en trekant</a></li>
+                            <li><a href="#">Ensvinklede trekanter</a></li>
+                            <li><a href="#">Ligebenet trekant</a></li>
+                            <li><a href="#">Ligesidet trekant</a></li>
+                            <li><a href="#">Retvinklet trekant</a></li>
+                            <li><a href="#">Trigonometri</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="headerBox">
-                            Rumfang og overflade
+                            Firkanter
                             <img src="img/icon-arrow-down.png" class="menu-IMG" />
                         </a>
                         <ul class="hidebox">
-                            <li><a href="Cylinder.html">Cylinder</a></li>
-                            <li><a href="Kasse.html">Kasse</a></li>
-                            <li><a href="#">Kegle</a></li>
-                            <li><a href="#">Kugle</a></li>
-                            <li><a href="#">Prisme</a></li>
-                            <li><a href="#">Pyramide</a></li>
+                            <li><a href="Rektangel.html">Rektangler</a></li>
+                            <li><a href="Parallelogram.html">Parallelogram</a></li>
+                            <li><a href="Trapez.html">Trapez</a></li>
                         </ul>
-
                     </li>
+                    <li><a href="Cirkel.html">Cirkler</a></li>
                 </ul>
-            </div>
-            <div class="main-menu-content">
-                <div class="swipe-area">
-                    <a data-toggle=".nav_container" id="sidebar-toggle">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </a>
-                </div>
-            </div>
-        </nav>
+            </li>
+            <li>
+                <a href="#" class="headerBox">
+                    Rumfang og overflade
+                    <img src="img/icon-arrow-down.png" class="menu-IMG" />
+                </a>
+                <ul class="hidebox">
+                    <li><a href="Cylinder.html">Cylinder</a></li>
+                    <li><a href="Kasse.html">Kasse</a></li>
+                    <li><a href="Kegle.html">Kegle</a></li>
+                    <li><a href="Kugle.html">Kugle</a></li>
+                    <li><a href="Prisme.html">Prisme</a></li>
+                    <li><a href="Pyramide.html">Pyramide</a></li>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+    <div class="main-menu-content">
+        <div class="swipe-area">
+            <a data-toggle=".nav_container" id="sidebar-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
         <h1>OnlineFormelsamling.dk</h1>
 
         <div class="Mat-content">
             <img src="" id="matIMG" />
             <div class="forms">
                 <form onsubmit="event.preventDefault(); UdregnAreal();">
+                    <p>En Rektangels Areal</p>
                     <span>b:</span><input type="number" id="bredde1" placeholder="Bredde" />
                     <br />
-                    <span>l:</span><input type="number" id="laengde1" placeholder="Længde" />
+                    <span>l:</span><input type="number" id="laengde1" placeholder="Lï¿½ngde" />
                     <br />
 
                     <input type="submit" value="udregn">
@@ -151,9 +151,10 @@
                     <hr />
                 </form>
                 <form onsubmit="event.preventDefault(); UdregnOmkreds();">
+                    <p>En Rektangels Omkreds</p>
                     <span>b:</span><input type="number" id="bredde2" placeholder="Bredde" />
                     <br />
-                    <span>l:</span><input type="number" id="laengde2" placeholder="Længde" />
+                    <span>l:</span><input type="number" id="laengde2" placeholder="Lï¿½ngde" />
                     <br />
 
                     <input type="submit" value="udregn">

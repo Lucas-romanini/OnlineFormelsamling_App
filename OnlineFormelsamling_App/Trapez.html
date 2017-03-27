@@ -1,8 +1,26 @@
 ﻿<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
 
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <title>Hello World!</title>
@@ -14,42 +32,49 @@
     <script src="js/FormlerOF.js"></script>
     <script>
 
-        function UdregnRumfang() {
+
+
+        function UdregnAreal() {
 
             var hoejde = $("#hoejde").val();
-            var grundAreal = $("#grundareal").val();
-            //Note to self: Grund arealet == ?*r^2
-            var rumfang = hoejde * grundAreal;
+            var sideA = $("#sideA").val();
+            var sideB = $("#sideB").val();
 
 
-            rumfang = rumfang.toFixed(3);
+            var areal = (hoejde*(parseInt(sideA) + parseInt(sideB)))*0.5;
 
-            $("#resultat").html(rumfang).round;
+            areal = areal.toFixed(3)
+
+
+            $("#resultat").html(areal).round;
 
             return false;
         }
 
         $(function () {
             var $textBox = $("#textBox");
+            var $parameter1 = $("#Parameter1");
+            var $parameter2 = $("#Parameter2");
+            var $parameter3 = $("#Parameter2");
             var $MatIMG = $("#matIMG");
-            $.ajax({
-                method: 'GET',
-                url: URL + 'api/OF/Udregninger/7',
-                success: function (FormlerOF) {
-                    $textBox.append("<p>" + FormlerOF.Beskrivelse + "</p>");
-                    $MatIMG.attr("src", "img/" + FormlerOF.IMG);
-                },
-                error: function (jqXhr, exeption) {
-                    $("#textBox").html("Der opstod en fejl")
-                }
+               $.ajax({
+                   method: 'GET',
+                   url: URL + 'api/OF/Udregninger/12',
+                   success: function (FormlerOF) {
+                       $textBox.append("<p>" + FormlerOF.Beskrivelse + "</p>");
+                       $MatIMG.attr("src", "img/" + FormlerOF.IMG);
+                   },
+                   error: function (jqXhr, exeption) {
+                       $("#textBox").html("Der opstod en fejl")
+                   }
 
-            });
+               });
 
-        });
+           });
     </script>
 </head>
 <body>
-    <div class="Main-content">        
+    <div class="Main-content">
         <nav class="nav_container">
             <div id="sidebar">
                 <ul>
@@ -125,18 +150,19 @@
         <div class="Mat-content">
             <img src="" id="matIMG" />
             <div class="forms">
-                <form onsubmit="event.preventDefault(); UdregnRumfang();">
-                    <p>En Kegles Rumfang</p>
+                <form onsubmit="event.preventDefault(); UdregnAreal();">
+                    <p>En Trapez areal</p>
                     <span>h:</span><input type="number" id="hoejde" placeholder="H�jde" />
                     <br />
-                    <span>G:</span><input type="number" id="grundareal" placeholder="Grundareal" />
+                    <span>a:</span><input type="number" id="sideA" placeholder="Side A" />
+                    <br />
+                    <span>b:</span><input type="number" id="sideB" placeholder="Side B" />
                     <br />
                     <input type="submit" value="udregn">
 
                     <p>Resultat = <span class="result" id="resultat"></span></p>
                     <hr />
                 </form>
-
             </div>
             <div class="text-box" id="textBox">
 

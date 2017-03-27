@@ -1,8 +1,26 @@
 ﻿<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
 
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <title>Hello World!</title>
@@ -14,42 +32,63 @@
     <script src="js/FormlerOF.js"></script>
     <script>
 
-        function UdregnRumfang() {
+
+
+        function UdregnAreal() {
 
             var hoejde = $("#hoejde").val();
-            var grundAreal = $("#grundareal").val();
-            //Note to self: Grund arealet == ?*r^2
-            var rumfang = hoejde * grundAreal;
+            var grundlinje = $("#grundlinje").val();
 
 
-            rumfang = rumfang.toFixed(3);
+            var areal = 0.5 * hoejde * grundlinje;
+            areal = areal.toFixed(3)
 
-            $("#resultat").html(rumfang).round;
+
+            $("#resultat1").html(areal).round;
 
             return false;
         }
 
+
+        function UdregnHeronsFormel() {
+            var side1 = $("#side1").val();
+            var side2 = $("#side2").val();
+            var side3 = $("#side3").val();
+
+            var s = (parseInt(side1) + parseInt(side2) + parseInt(side3)) / 2;
+            var heronsFormel = Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+
+            heronsFormel = heronsFormel.toFixed(3);
+
+            $("#resultat2").html(heronsFormel).round;
+
+
+        }
+
         $(function () {
             var $textBox = $("#textBox");
+            var $parameter1 = $("#Parameter1");
+            var $parameter2 = $("#Parameter2");
+            var $parameter3 = $("#Parameter2");
             var $MatIMG = $("#matIMG");
-            $.ajax({
-                method: 'GET',
-                url: URL + 'api/OF/Udregninger/7',
-                success: function (FormlerOF) {
-                    $textBox.append("<p>" + FormlerOF.Beskrivelse + "</p>");
-                    $MatIMG.attr("src", "img/" + FormlerOF.IMG);
-                },
-                error: function (jqXhr, exeption) {
-                    $("#textBox").html("Der opstod en fejl")
-                }
+               $.ajax({
+                   method: 'GET',
+                   url: URL + 'api/OF/Udregninger/13',
+                   success: function (FormlerOF) {
+                       $textBox.append("<p>" + FormlerOF.Beskrivelse + "</p>");
+                       $MatIMG.attr("src", "img/" + FormlerOF.IMG);
+                   },
+                   error: function (jqXhr, exeption) {
+                       $("#textBox").html("Der opstod en fejl")
+                   }
 
-            });
+               });
 
-        });
+           });
     </script>
 </head>
 <body>
-    <div class="Main-content">        
+    <div class="Main-content">
         <nav class="nav_container">
             <div id="sidebar">
                 <ul>
@@ -125,18 +164,29 @@
         <div class="Mat-content">
             <img src="" id="matIMG" />
             <div class="forms">
-                <form onsubmit="event.preventDefault(); UdregnRumfang();">
-                    <p>En Kegles Rumfang</p>
+                <form onsubmit="event.preventDefault(); UdregnAreal();">
+                    <p>En Trekants areal</p>
                     <span>h:</span><input type="number" id="hoejde" placeholder="H�jde" />
                     <br />
-                    <span>G:</span><input type="number" id="grundareal" placeholder="Grundareal" />
+                    <span>g:</span><input type="number" id="grundlinje" placeholder="Grundlinje" />
                     <br />
                     <input type="submit" value="udregn">
 
-                    <p>Resultat = <span class="result" id="resultat"></span></p>
+                    <p>Resultat = <span class="result" id="resultat1"></span></p>
                     <hr />
                 </form>
+                <form onsubmit="event.preventDefault(); UdregnHeronsFormel();">
+                    <p>Herons Formel</p>
+                    <span>a:</span><input type="number" id="side1" placeholder="Side a" />
+                    <br />
+                    <span>b:</span><input type="number" id="side2" placeholder="Side b" />
+                    <br />
+                    <span>c:</span><input type="number" id="side3" placeholder="Side c" />
+                    <br />
+                    <input type="submit" value="udregn" />
 
+                    <p>Resultat = <span class="result" id="resultat2"></span></p>
+                </form>
             </div>
             <div class="text-box" id="textBox">
 
